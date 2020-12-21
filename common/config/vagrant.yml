@@ -47,7 +47,7 @@ win2016ad:
 win2019ad:
   box: StefanScherer/windows_2019
   vm_name: win2019ad
-  domain_mode: WinThreshold
+  domain_mode: Win2012R2
   people_ou_name: People
   groups_ou_name: Groups
   mem_size: 2048
@@ -55,131 +55,14 @@ win2019ad:
   public_ip: 10.0.0.4
 # - EOF AD Config -------------------------------------------------------------
 
-# - OUD Config ----------------------------------------------------------------
-# Configuration valid for OUD server
-ol7oud12:
-  #box: ol7-latest
-  box: oraclelinux/7
-  #box_url: https://yum.oracle.com/boxes/oraclelinux/latest/ol7-latest.box
-  box_url: https://oracle.github.io/vagrant-projects/boxes/oraclelinux/7.json
-  vm_name: ol7oud12
-  mem_size: 1024
+# - Windows member config -----------------------------------------------------
+# Configuration valid for Windows 2019 member server
+win2019mem01:
+  box: StefanScherer/windows_2019
+  vm_name: win2019mem01
+  mem_size: 2048
   cpus: 1
   public_ip: 10.0.0.5
-  ssh_port: 8022
-  ldap_port: 8389
-  ldaps_port: 8636
-  admin_port: 8444
-  JAVA_PKG: p30425892_180241_Linux-x86-64.zip
-# - EOF OUD Config ------------------------------------------------------------
-
-# - DB Eng Config -------------------------------------------------------------
-# Configuration valid for Oracle 19c database server
-ol7dbeng:
-  box: ol7-latest
-  box_url: https://yum.oracle.com/boxes/oraclelinux/latest/ol7-latest.box
-  vm_name: ol7dbeng
-  mem_size: 4096
-  cpus: 2
-  public_ip: 10.0.0.10
-  ssh_port: 10022
-  tns_port: 10521
-  console_port: 10500
-  # oracle_sid_cdb: TDB190C
-  # oracle_sid_sdb: TDB190S
-  # CUSTOM_RSP: /vagrant/config
-  # ORADBA_DBC_FILE: dbca19.0.0_custom.dbc.tmpl
-  # ORADBA_RSP_FILE: dbca19.0.0_custom.rsp.tmpl
-  ORACLE_HOME_NAME: 19.0.0.0
-  # SETUP_DB: 10_setup_db.sh
-  # DB_BASE_PKG: 'LINUX.X64_193000_db_home.zip'
-  # DB_PATCH_PKG: 'p30557433_190000_Linux-x86-64.zip'
-  # DB_OJVM_PKG: 'p30484981_190000_Linux-x86-64.zip'
-  # DB_OPATCH_PKG: 'p6880880_190000_Linux-x86-64.zip'
-# - EOF DB Eng Config ---------------------------------------------------------
-
-# - 19c DB Config -------------------------------------------------------------
-# Configuration valid for Oracle 19c database server
-ol7db19:
-  box: ol7-latest
-  box_url: https://yum.oracle.com/boxes/oraclelinux/latest/ol7-latest.box
-  vm_name: ol7db19
-  mem_size: 4096
-  cpus: 2
-  public_ip: 10.0.0.19
-  ssh_port: 19022
-  tns_port: 19521
-  console_port: 19500
-  oracle_sid_cdb: TDB190C
-  oracle_sid_sdb: TDB190S
-  CUSTOM_RSP: /vagrant/config
-  ORADBA_DBC_FILE: dbca19.0.0_custom.dbc.tmpl
-  ORADBA_RSP_FILE: dbca19.0.0_custom.rsp.tmpl
-  ORACLE_HOME_NAME: 19.0.0.0
-  SETUP_DB: 10_setup_db.sh
-  DB_BASE_PKG: 'LINUX.X64_193000_db_home.zip'
-  DB_PATCH_PKG: 'p30557433_190000_Linux-x86-64.zip'
-  DB_OJVM_PKG: 'p30484981_190000_Linux-x86-64.zip'
-  DB_OPATCH_PKG: 'p6880880_190000_Linux-x86-64.zip'
-# - EOF 19c DB Config ---------------------------------------------------------
-
-# - 18c DB Config -------------------------------------------------------------
-# Configuration valid for Oracle 18c database server
-ol7db18:
-  box: ol7-latest
-  box_url: https://yum.oracle.com/boxes/oraclelinux/latest/ol7-latest.box
-  vm_name: ol7db18
-  mem_size: 4096
-  cpus: 2
-  public_ip: 10.0.0.18
-  ssh_port: 18022
-  tns_port: 18521
-  console_port: 18500
-  oracle_sid_cdb: TDB180C
-  oracle_sid_sdb: TDB180S
-  ORACLE_HOME_NAME: 18.0.0.0
-  SETUP_DB: 10_setup_db_18.7.sh
-  DB_PATCH_PKG: ''
-  DB_OJVM_PKG: ''
-# - EOF 18c DB Config ---------------------------------------------------------
-
-# - 12c DB Config -------------------------------------------------------------
-# Configuration valid for Oracle 12c database server
-ol7db122:
-  box: ol7-latest
-  box_url: https://yum.oracle.com/boxes/oraclelinux/latest/ol7-latest.box
-  vm_name: ol7db122
-  mem_size: 4096
-  cpus: 2
-  public_ip: 10.0.0.12
-  ssh_port: 12022
-  tns_port: 12521
-  console_port: 12500
-  oracle_sid_cdb: TDB122C
-  oracle_sid_sdb: TDB122S
-  ORACLE_HOME_NAME: 12.2.0.1
-  SETUP_DB: 10_setup_db_12.2.sh
-  DB_PATCH_PKG: ''
-  DB_OJVM_PKG: ''
-# - EOF 12c DB Config ---------------------------------------------------------
-
-# - 11g DB Config -------------------------------------------------------------
-# Configuration valid for Oracle 11c database server
-ol7db112:
-  box: ol7-latest
-  box_url: https://yum.oracle.com/boxes/oraclelinux/latest/ol7-latest.box
-  vm_name: ol7db112
-  mem_size: 4096
-  cpus: 2
-  public_ip: 10.0.0.11
-  ssh_port: 11022
-  tns_port: 11521
-  oracle_sid_cdb: ''
-  oracle_sid_sdb: TDB112S
-  ORACLE_HOME_NAME: 11.2.0.4
-  SETUP_DB: 10_setup_db_11.2.sh
-  DB_PATCH_PKG: ''
-  DB_OJVM_PKG: ''
-# - EOF 11g DB Config ---------------------------------------------------------
+# - EOF AD Config -------------------------------------------------------------
 
 # --- EOF -------------------------------------------------------------------

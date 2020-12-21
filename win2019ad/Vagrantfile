@@ -107,5 +107,44 @@ Vagrant.configure("2") do |config|
       s.args        = [var_domain_name]
     end
   end
+
+  config.vm.define "winc01" do |winc01|
+    winc01.vm.box = "StefanScherer/windows_2019"
+    winc01.vm.hostname = "winc01"
+    winc01.vm.box_url = "StefanScherer/windows_2019"
+
+    winc01.vm.network :private_network, ip: "10.0.0.5", gateway: var_gateway_address, dns: var_dns
+
+    winc01.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ["modifyvm", :id, "--name", "winc01"]
+    end
+  end
+
+  config.vm.define "winc02" do |winc02|
+    winc02.vm.box = "StefanScherer/windows_2019"
+    winc02.vm.hostname = "winc02"
+    winc02.vm.box_url = "StefanScherer/windows_2019"
+
+    winc02.vm.network :private_network, ip: "10.0.0.6", gateway: var_gateway_address, dns: var_dns
+
+    winc02.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ["modifyvm", :id, "--name", "winc02"]
+    end
+  end
+
+  config.vm.define "ans01" do |ans01|
+    ans01.vm.box = "geerlingguy/centos8"
+    ans01.vm.hostname = "ans01"
+    ans01.vm.box_url = "geerlingguy/centos8"
+
+    ans01.vm.network :private_network, ip: "10.0.0.7", gateway: var_gateway_address, dns: var_dns
+
+    ans01.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--memory", 512]
+      v.customize ["modifyvm", :id, "--name", "ans01"]
+    end
+  end
 end
 # --- EOF -------------------------------------------------------------------
